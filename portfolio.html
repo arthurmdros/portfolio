@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio - Arthur Medeiros</title>
+    <!-- Font Awesome 6 Free -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap JS (opcional, só se for usar componentes como modal, toast, dropdown etc) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="light">
+    <!-- Dialog -->
+    <div id="projectDialog" class="dialog">
+      <div class="dialog-content" id="dialogContent">
+        <div class="dialog-header">
+          <span class="dialog-btn" id="maximizeBtn"
+            ><i class="fas fa-up-right-from-square"></i
+          ></span>
+          <span class="dialog-btn" onclick="closeDialog()">✖</span>
+        </div>
+        <h2 id="dialogTitle"></h2>
+
+        <div class="version-switch">
+          <button id="btnWeb" onclick="switchVersion('web')">
+            Versão Web <i class="fas fa-desktop"></i>
+          </button>
+          <button id="btnApp" onclick="switchVersion('app')">
+            Versão Mobile <i class="fas fa-mobile-android"></i>
+          </button>
+        </div>
+        <div class="swiper swiperAuto" data-aos="fade-up">
+          <div class="swiper-wrapper" id="dialogImages">
+            <!-- Slides serão inseridos aqui via JavaScript -->
+          </div>
+          <div class="swiper-pagination"></div>
+          <!-- <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div> -->
+        </div>
+        <p id="dialogDescription"></p>
+        <div id="dialogTechs" class="tech-list"></div>
+        <a id="dialogLink" target="_blank" class="btn btn-sm" data-i18n="link-project">
+          Acessar Projeto <i class="fab fa-github"></i>
+        </a>
+        <!-- Handle para redimensionar -->
+        <!-- <div class="dialog-resize-handle"></div> -->
+      </div>
+    </div>
+
+    <!-- Preview fullscreen -->
+    <div class="image-preview" id="imagePreview">
+      <span class="close-preview" onclick="closePreview()">✖</span>
+      <img id="previewImg" src="" alt="Preview" />
+    </div>
+
+    <button id="lang-toggle" class="floating-btn">🌐</button>
+
+    <button class="toggle-theme floating-btn-theme">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Header -->
+    <header>
+      <nav>
+        <div><img src="assets/logo.png" alt="Logo" /></div>
+        <div>
+          <a data-i18n="who-am-i-title" href="#about">
+            <i class="fas fa-person-chalkboard"></i> Quem sou eu
+          </a>
+          <a data-i18n="skills-title" href="#skills">
+            <i class="fas fa-tools"></i> Habilidades
+          </a>
+          <a data-i18n="experience-title" href="#experience">
+            <i class="fas fa-briefcase"></i>Experiência
+          </a>
+          <a data-i18n="projects-title" href="#projects">
+            <i class="fas fa-rocket"></i> Projetos
+          </a>
+          <a data-i18n="contact-title" href="#contact">
+            <i class="fas fa-contact-book"></i> Contato
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Quem sou eu -->
+      <div class="container-center">
+        <div id="typed-wrapper">
+          <div id="typed-container"></div>
+        </div>
+      </div>
+      <section class="section-project" id="about">
+        <h2 data-i18n="who-am-i-title" class="section-title">
+          <i class="fas fa-person-chalkboard"></i> Quem sou eu
+        </h2>
+        <div class="card text-width" data-aos="fade-up">
+          <h3 data-i18n="intro">
+            <i class="fas fa-handshake-angle"></i>Olá, sou o Arthur
+          </h3>
+          <p data-i18n="about">
+            Desenvolvedor Web/Mobile com mais de {{ dateExperience }} de
+            experiência. Especialista em Angular, React, React Native e Flutter.
+          </p>
+        </div>
+      </section>
+
+      <!-- Habilidades -->
+      <section class="section-project" id="skills">
+        <h2 data-i18n="skills-title" class="section-title">
+          <i class="fas fa-tools"></i> Habilidades
+        </h2>
+        <div class="skills">
+          <div class="skill angular" data-aos="flip-left">
+            <i class="fab fa-angular"></i>
+            <span>Angular</span>
+          </div>
+          <div class="skill react" data-aos="flip-left" data-aos-delay="100">
+            <i class="fab fa-react"></i>
+            <span>React</span>
+          </div>
+          <div
+            class="skill react-native"
+            data-aos="flip-left"
+            data-aos-delay="200"
+          >
+            <i class="fab fa-react"></i>
+            <span>React Native</span>
+          </div>
+          <div class="skill flutter" data-aos="flip-left" data-aos-delay="300">
+            <i class="devicon-flutter-plain white"></i>
+            <span>Flutter</span>
+          </div>
+          <div class="skill node" data-aos="flip-left" data-aos-delay="400">
+            <i class="fab fa-node-js"></i>
+            <span>Node.js</span>
+          </div>
+          <div class="skill spring" data-aos="flip-left" data-aos-delay="500">
+            <i class="fas fa-leaf"></i>
+            <span>Spring Boot</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experiência -->
+      <section class="section-project" id="experience">
+        <h2 data-i18n="experience-title" class="section-title">
+          <i class="fas fa-briefcase"></i> Experiência
+        </h2>
+
+        <div class="swiper swiperManual" data-aos="fade-up">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="center-card">
+                <div class="card text-width" data-aos="fade-right">
+                  <h3><i class="fas fa-wrench"></i> Viggo</h3>
+                  <p data-i18n="experience-developer-title">
+                    Full Stack Developer (2019 - Atual)
+                  </p>
+                  <p data-i18n="experience-developer">
+                    Atuação em desenvolvimento de soluções Web/Mobile,
+                    construindo aplicativos intuitivos e aplicações web
+                    robustas. Boas práticas de código com aplicação de clean
+                    architecture e metodologia scrum.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="center-card">
+                <div class="card text-width" data-aos="fade-right">
+                  <h3><i class="fas fa-school"></i> UFRN</h3>
+                  <p data-i18n="experience-graduation-title">
+                    Bacharelado em Sistemas de informação (2017 - 2023)
+                  </p>
+                  <p data-i18n="experience-graduation">
+                    Formado em sistemas de informação, todo o conhecimento que
+                    detenho vem boa parte da minha vivência acadêmica, como:
+                    organização, metodologias e paixão por tecnologia. Atuei em
+                    projetos de extensão, monitoria e publiquei um artigo na
+                    edição de 2023 do Brazilian Conference - Springer no qual
+                    apliquei estudos de caso com foco em análise de dados,
+                    aplicando aprendizado de máquina, por meio da linguagem de
+                    programação Python.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="center-card">
+                <div class="card text-width" data-aos="fade-right">
+                  <h3><i class="fas fa-money-bill"></i>&nbsp;Freelancer</h3>
+                  <p data-i18n="experience-freelancer-title">
+                    Full Stack Developer (2019 - Atual)
+                  </p>
+                  <p data-i18n="experience-freelancer">
+                    Sou desenvolvedor Full Stack com quase 5 anos de experiência
+                    em criação de sistemas web e mobile, atuando desde a
+                    concepção até a entrega final do produto. Já trabalhei em
+                    projetos de diferentes segmentps, como Têxtil, Saúde,
+                    Eventos, Vestuário, sempre focando em entregar soluções
+                    escaláveis, seguras e com ótima experiência para o usuário.
+                    Meu foco é transformar ideias em sistemas robustos e
+                    funcionais, entregando sempre com qualidade e prazo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <!-- <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div> -->
+        </div>
+      </section>
+
+      <!-- Projetos com slider -->
+      <section class="section-project" id="projects">
+        <h2 data-i18n="projects-title" class="section-title">
+          <i class="fas fa-rocket"></i> Projetos
+        </h2>
+        <div class="swiper swiperManual" data-aos="fade-up">
+          <div class="swiper-wrapper" id="projectsWrapper">
+            <!-- Slides serão inseridos aqui via JavaScript -->
+          </div>
+          <div class="swiper-pagination"></div>
+          <!-- <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div> -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="section-project">
+        <h2 data-i18n="contact-title" class="section-title">
+          <i class="fas fa-contact-book"></i> Contato
+        </h2>
+      </div>
+      <div class="footer-container" data-aos="fade-up">
+        <!-- Formulário -->
+
+        <div class="footer-contact">
+          <form class="contact-form">
+            <div class="form-group">
+              <input id="name" type="text" placeholder=" " required />
+              <label for="name" data-i18n="contact-name">Nome</label>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder=" " id="email" required />
+              <label for="email">E-mail</label>
+            </div>
+            <div class="form-group">
+              <textarea
+                rows="5"
+                id="message"
+                placeholder=" "
+                required
+              ></textarea>
+              <label for="message" data-i18n="contact-message">Mensagem</label>
+            </div>
+            <button type="submit" data-i18n="contact-send">
+              Enviar <i class="fa fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- Redes sociais -->
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/arthurmdros/" target="_blank">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/arthurmdros" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="mailto:arthurmedeiros2005@gmail.com">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <a href="https://discord.com/users/arthurmdros#5886" target="_blank">
+            <i class="fab fa-discord"></i> Discord
+          </a>
+        </div>
+      </div>
+      <p class="footer-copy" data-i18n="copyright">
+        © 2025 Arthur Medeiros. Todos os direitos reservados.
+      </p>
+    </footer>
+    <!-- Container global do Snackbar -->
+    <div id="snackbar-container" aria-live="polite" aria-atomic="true"></div>
+    <!-- Loading -->
+    <div id="lazy-loader">
+      <div class="loader-box">
+        <div class="loader-icon success">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="loader-icon error"><i class="fas fa-times-circle"></i></div>
+        <h3 id="loader-title">Enviando e-mail...</h3>
+        <div class="progress-bar">
+          <div class="progress-fill" id="loader-progress"></div>
+        </div>
+        <div class="loader-msg" id="loader-msg">
+          Aguarde, processando seu pedido...
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- <script src="https://cdn.emailjs.com/dist/email.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
