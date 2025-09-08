@@ -1,0 +1,7 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Node / NPM (caso use dependências no futuro)
+node_modules/
+dist/
