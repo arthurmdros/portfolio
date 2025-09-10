@@ -35,6 +35,8 @@ const translations = {
     "link-project": `See project <i class="fab fa-github"></i>`,
     "no-version": `No version available to view images`,
     "select-version": `Select a version to view images`,
+    "version-web": `Web Version <i class="fas fa-desktop"></i>`,
+    "version-mobile": `Mobile Version <i class="fas fa-mobile-android"></i>`,
     // projects
     "project-behero-title": "Be-Hero",
     "project-behero-description":
@@ -69,6 +71,24 @@ const translations = {
     "project-receipts-description":
       "Guide Receipts is an app that allows users to store and organize their favorite recipes easily and efficiently. It enables saving recipes, categorizing them, creating step-by-step instructions, and marking favorites for quick access.",
     "project-receipts-short": "An app to store and organize personal recipes.",
+    
+    "project-vitex-title": "ViTex",
+    "project-vitex-description":
+      "ViTex is a system that manages the entire textile production process and sales. It lets users register orders, track production from start to finish, and organize shipments. The system also supports multiple users, helping teams work together more efficiently. With simple inventory management for both production and warehouse, it improves material tracking and overall organization.",
+    "project-vitex-short":
+      "Web/Mobile system to manage textile production, sales, and shipments.",
+
+    "project-vpass-title": "VPass",
+    "project-vpass-description":
+      "VPass is an access control system designed to make visitor management in corporate spaces safer, faster, and easier. It ensures security while simplifying entry processes.",
+    "project-vpass-short":
+      "Web/Mobile system for managing visitor access in corporate, industrial, and institutional spaces.",
+
+    "project-woundcaresys-title": "WoundCareSys",
+    "project-woundcaresys-description":
+      "WoundCareSys is a digital solution that combines wound care monitoring with smart management tools. It helps clinics, healthcare professionals, and patients track healing progress, manage appointments, and collect clinical data, while also handling finances, inventory, and sales. It connects personalized care with efficient management.",
+    "project-woundcaresys-short":
+      "Web/Mobile system for wound care monitoring with smart management tools.",
   },
   pt: {
     intro: `<i class="fas fa-handshake-angle"></i> Olá, eu sou Arthur Medeiros`,
@@ -100,6 +120,8 @@ const translations = {
     "link-project": `Acessar projeto <i class="fab fa-github"></i>`,
     "no-version": `Não há disponível uma versão para visualizar as imagens`,
     "select-version": `Selecione uma versão para visualizar as imagens`,
+    "version-web": `Versão Web <i class="fas fa-desktop"></i>`,
+    "version-mobile": `Versão Mobile <i class="fas fa-mobile-android"></i>`,
     // projetos
     "project-behero-title": "Be-Hero",
     "project-behero-description":
@@ -136,6 +158,24 @@ const translations = {
       "Guide Receipts é um aplicativo para armazenar e organizar receitas pessoais de forma simples e prática. Ele permite salvar receitas, categorizá-las, definir instruções passo a passo e favoritar as melhores para acesso rápido.",
     "project-receipts-short":
       "Aplicativo para armazenar e organizar receitas pessoais.",
+
+    "project-vitex-title": "ViTex",
+    "project-vitex-description":
+      "O ViTex atua como um sistema de controle de todo o processo de produção da área têxtil e também controle das suas vendas, permitindo que o usuário cadastre suas vendas/encomendas e faça o controle da produção desde o início até a finalização e montagem da expedição para o cliente. Tornar colaboradores (sistema multi usuários) com sentimento de pertença, uma vez que são inseridos nessa nova dinamicidade do processo. Além da gestão um controle de estoque, tanto de produção quanto de depósito, de forma simples e otimizada, busca uma melhor visão dos materiais consumidos e identificando-os para uma melhor gestão.",
+    "project-vitex-short":
+      "Sistema Web/Mobile que permite o controle de todo o processo de produção da área têxtil como também controle das suas vendas, expedições, etc.",
+
+    "project-vpass-title": "VPass",
+    "project-vpass-description":
+      "O VPass é um sistema de controle de acesso de pessoas em ambientes, desenvolvido para garantir segurança, eficiência e praticidade na gestão de entradas de visitantes em ambientes corporativos.",
+    "project-vpass-short":
+      "Sistema Web/Mobile que permite o controle de acesso de pessoas como visitantes de ambientes corporativos, industriais e institucionais.",
+
+    "project-woundcaresys-title": "WoundCareSys",
+    "project-woundcaresys-description":
+      "O WoundCareSys é uma solução digital integrada que une o acompanhamento clínico de feridas com uma retaguarda administrativa robusta. Voltado para clínicas, profissionais de saúde e pacientes, o sistema permite o monitoramento visual da cicatrização, gestão de agendamentos e coleta de dados clínicos, enquanto oferece ferramentas empresariais para controle financeiro, estoque e vendas. É a união entre cuidado personalizado e gestão eficiente.",
+    "project-woundcaresys-short":
+      "Um sistema Web/Mobile que une o acompanhamento clínico de feridas com uma retaguarda administrativa robusta.",
   },
 };
 
@@ -462,7 +502,8 @@ function openDialog({
     translations[currentLang][titleKey];
   document.getElementById("dialogDescription").innerText =
     translations[currentLang][descriptionKey];
-  document.getElementById("dialogLink").href = github;
+  if (github) document.getElementById("dialogLink").href = github;
+  else document.getElementById("dialogLink").style.display = "none";
 
   // 🔹 Renderizar tecnologias
   const techsContainer = document.getElementById("dialogTechs");
@@ -474,8 +515,8 @@ function openDialog({
   });
 
   // Determina quais versões existem
-  const hasWeb = images.web && images.web.length > 0;
-  const hasApp = images.app && images.app.length > 0;
+  const hasWeb = images && images.web && images.web.length > 0;
+  const hasApp = images && images.app && images.app.length > 0;
 
   const btnWeb = document.getElementById("btnWeb");
   const btnApp = document.getElementById("btnApp");
@@ -610,7 +651,6 @@ const imagePreview = document.getElementById("imagePreview");
 const previewImg = document.getElementById("previewImg");
 
 function openPreview(imgElement) {
-  console.log(imgElement);
   previewImg.src = imgElement;
   imagePreview.style.display = "flex";
 }
@@ -773,6 +813,25 @@ const projects = [
     image: "assets/be_hero/web/inicial.jpeg",
   },
   {
+    name: "ViTex",
+    description:
+      "Sistema Web/Mobile que permite o controle de todo o processo de produção da área têxtil e também controle das suas vendas, permitindo que o usuário cadastre suas vendas/encomendas e faça o controle da produção desde o início até a finalização e montagem da expedição para o cliente.",
+    descriptionShortKey: "project-vitex-short",
+    dialog: {
+      titleKey: "project-vitex-title",
+      descriptionKey: "project-vitex-description",
+      title: "ViTex",
+      description:
+        "O ViTex atua como um sistema de controle de todo o processo de produção da área têxtil e também controle das suas vendas, permitindo que o usuário cadastre suas vendas/encomendas e faça o controle da produção desde o início até a finalização e montagem da expedição para o cliente. Tornar colaboradores (sistema multi usuários) com sentimento de pertença, uma vez que são inseridos nessa nova dinamicidade do processo. Além da gestão um controle de estoque, tanto de produção quanto de depósito, de forma simples e otimizada, busca uma melhor visão dos materiais consumidos e identificando-os para uma melhor gestão.",
+      images: {
+        web: ["assets/vitex/web/inicial.png"],
+        app: ["assets/vitex/mobile/inicial.png"],
+      },
+      techs: ["Angular", "Flutter"],
+    },
+    image: "assets/vitex/web/inicial.png",
+  },
+  {
     name: "E-Coleta",
     description:
       "It is a system Web/Mobile that keeps waste collection points, whether in an establishment, NGOs (Non-Governmental Organizations) and etc.",
@@ -800,6 +859,24 @@ const projects = [
     image: "assets/e_coleta/web/inicial.jpeg",
   },
   {
+    name: "VPass",
+    description:
+      "Sistema Web/Mobile que permite o controle de acesso de pessoas em ambientes, desenvolvido para garantir segurança, eficiência e praticidade na gestão de entradas de visitantes em ambientes corporativos, industriais e institucionais.",
+    descriptionShortKey: "project-vpass-short",
+    dialog: {
+      titleKey: "project-vpass-title",
+      descriptionKey: "project-vpass-description",
+      title: "VPass",
+      description:
+        "O VPass é um sistema de controle de acesso de pessoas em ambientes, desenvolvido para garantir segurança, eficiência e praticidade na gestão de entradas de visitantes em ambientes corporativos, industriais e institucionais. Seu principal objetivo é automatizar o controle de fluxo de pessoas, reduzir riscos de acessos indevidos e otimizar processos operacionais.",
+      images: {
+        web: ["assets/vpass/web/inicial.png"],
+      },
+      techs: ["Angular"],
+    },
+    image: "assets/vpass/web/inicial.png",
+  },
+  {
     name: "Proffy",
     description: "Um sistema Web de uma plataforma de estudos online.",
     descriptionShortKey: "project-proffy-short",
@@ -820,6 +897,25 @@ const projects = [
       github: "https://github.com/arthurmdros/proffy-web",
     },
     image: "assets/proffy/inicial.jpeg",
+  },
+  {
+    name: "WoundCareSys",
+    description:
+      "Um sistema Web/Mobile que une o acompanhamento clínico de feridas com uma retaguarda administrativa robusta.",
+    descriptionShortKey: "project-woundcaresys-short",
+    dialog: {
+      titleKey: "project-woundcaresys-title",
+      descriptionKey: "project-woundcaresys-description",
+      title: "WoundCareSys",
+      description:
+        "O WoundCareSys é uma solução digital integrada que une o acompanhamento clínico de feridas com uma retaguarda administrativa robusta. Voltado para clínicas, profissionais de saúde e pacientes, o sistema permite o monitoramento visual da cicatrização, gestão de agendamentos e coleta de dados clínicos, enquanto oferece ferramentas empresariais para controle financeiro, estoque e vendas. É a união entre cuidado personalizado e gestão eficiente.",
+      images: {
+        web: ["assets/woundcaresys/web/inicial.png"],
+        app: ["assets/woundcaresys/mobile/inicial.png"],
+      },
+      techs: ["Angular", "Flutter"],
+    },
+    image: "assets/woundcaresys/web/inicial.png",
   },
   {
     name: "Event Manager",
