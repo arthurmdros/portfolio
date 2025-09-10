@@ -461,11 +461,10 @@ body.dark .toggle-theme i {
 
 /* ====== CARD BASE ====== */
 
-
 .text-width {
   width: 100%;
   max-width: 600px; /* limite no desktop */
-  margin: 0 auto;  /* centraliza */
+  margin: 0 auto; /* centraliza */
   padding: 1rem 1rem;
 }
 
@@ -1004,8 +1003,8 @@ footer {
   flex: 1;
   width: 100%;
   max-width: 450px; /* limite no desktop */
-  margin: 0 auto;   /* centraliza */
-  padding: 0 1rem;  /* respiro lateral */
+  margin: 0 auto; /* centraliza */
+  padding: 0 1rem; /* respiro lateral */
 }
 
 .footer-contact h3,
@@ -1171,8 +1170,7 @@ body.dark #lang-toggle {
 .dialog {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0; /* equivale a top:0; left:0; right:0; bottom:0 */
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
@@ -1180,25 +1178,27 @@ body.dark #lang-toggle {
   justify-content: center;
   align-items: center;
   z-index: 2000;
-  padding: 20px;
+  padding: 10px; /* padding reduzido para mobile */
   animation: fadeIn 0.3s ease;
+  overflow: auto; /* garante scroll se nada couber */
 }
 
 /* Conteúdo */
 .dialog-content {
   backdrop-filter: blur(12px);
-  border-radius: 10px;
-  padding: 24px;
-  width: 600px;
-  height: 800px;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh; /* nunca passa da altura da tela */
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   transform: scale(0.9);
   animation: scaleIn 0.4s ease forwards;
   text-align: center;
   position: relative;
-  resize: both; /* permite redimensionar */
-  overflow: auto;
+  overflow: auto; /* scroll interno se o conteúdo for maior */
   transition: all 0.3s ease;
+  resize: none; /* evita quebrar no mobile */
 }
 
 /* Header do dialog */
@@ -1698,6 +1698,12 @@ body.light {
   .text-width {
     max-width: 100%;
   }
+
+  .dialog-content {
+    width: 95%;
+    max-height: 85vh;
+    padding: 16px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1707,5 +1713,17 @@ body.light {
 
   .text-width {
     padding: 2rem 1rem;
+  }
+
+  .dialog {
+    padding: 5px;
+  }
+
+  .dialog-content {
+    width: 100%;
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    padding: 12px;
   }
 }
