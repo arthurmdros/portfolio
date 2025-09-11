@@ -68,12 +68,14 @@ body.light {
     color: var(--text-light);
   }
 
-  .nav-links a {
-    color: var(--text-light) !important;
-  }
-  
-  .nav-links {
-    background: var(--card-light);
+  @media (max-width: 768px) {
+    .nav-links a {
+      color: var(--text-light) !important;
+    }
+
+    .nav-links {
+      background: var(--card-light);
+    }
   }
 }
 
@@ -103,12 +105,14 @@ body.dark {
     color: var(--text-dark);
   }
 
-  .nav-links a {
-    color: var(--text-dark) !important;
-  }
+  @media (max-width: 768px) {
+    .nav-links a {
+      color: var(--text-dark) !important;
+    }
 
-  .nav-links {
-    background: var(--card-dark);
+    .nav-links {
+      background: var(--card-dark);
+    }
   }
 }
 
