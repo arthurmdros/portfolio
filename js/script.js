@@ -36,7 +36,9 @@ const translations = {
     "experience-graduation-title":
       "Bachelor’s Degree in Information Systems (2017-2024)",
     "experience-freelancer-title": "Full Stack Developer (2019 - Current)",
-    "experience-freelancer": `I am a Full Stack Developer with nearly ${dateExperience} years of experience in building web and mobile systems, working from conception to final product delivery. I have participated in projects across different sectors such as Textile, Healthcare, Events, and Fashion, always focusing on delivering scalable, secure solutions with an excellent user experience. My goal is to transform ideas into robust and functional systems, consistently delivering with quality and on time.`,
+    "experience-freelancer": `I am a Full Stack Developer with nearly ${
+      Number(dateExperience) + 1
+    } years of experience in building web and mobile systems, working from conception to final product delivery. I have participated in projects across different sectors such as Textile, Healthcare, Events, and Fashion, always focusing on delivering scalable, secure solutions with an excellent user experience. My goal is to transform ideas into robust and functional systems, consistently delivering with quality and on time.`,
     "detail-project": `See details <i class="fas fa-eye"></i>`,
     "link-project": `See project <i class="fab fa-github"></i>`,
     "no-version": `No version available to view images`,
@@ -117,7 +119,9 @@ const translations = {
     "experience-graduation-title":
       "Bracharelado em Sistemas de Informação (2017-2024)",
     "experience-freelancer-title": "Full Stack Developer (2019 - Atual)",
-    "experience-freelancer": `Sou desenvolvedor Full Stack com quase ${dateExperience} anos de experiência em criação de sistemas web e mobile, atuando desde a concepção até a entrega final do produto. Já trabalhei em projetos de diferentes segmentos, como Têxtil, Saúde, Eventos, Vestuário, sempre focando em entregar soluções escaláveis, seguras e com ótima experiência para o usuário. Meu foco é transformar ideias em sistemas robustos e funcionais, entregando sempre com qualidade e prazo.`,
+    "experience-freelancer": `Sou desenvolvedor Full Stack com quase ${
+      Number(dateExperience) + 1
+    } anos de experiência em criação de sistemas web e mobile, atuando desde a concepção até a entrega final do produto. Já trabalhei em projetos de diferentes segmentos, como Têxtil, Saúde, Eventos, Vestuário, sempre focando em entregar soluções escaláveis, seguras e com ótima experiência para o usuário. Meu foco é transformar ideias em sistemas robustos e funcionais, entregando sempre com qualidade e prazo.`,
     "detail-project": `Ver detalhes <i class="fas fa-eye"></i>`,
     "link-project": `Acessar projeto <i class="fab fa-github"></i>`,
     "no-version": `Não há disponível uma versão para visualizar as imagens`,
