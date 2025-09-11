@@ -3,14 +3,21 @@
   emailjs.init("FjXr34lY4EcBWYXNn");
 })();
 
-const dateExperience = "5 anos";
+function milissegundosParaAnos(milissegundos) {
+  const milissegundosPorAno = 1000 * 60 * 60 * 24 * 365.25; // Aproximação do ano (incluindo anos bissextos)
+  const anos = milissegundos / milissegundosPorAno;
+  return anos;
+}
+
+const dateExperience = milissegundosParaAnos(
+  new Date().getTime() - new Date("2022-01-01").getTime()
+).toFixed(0);
 
 // JSON com traduções
 const translations = {
   en: {
     intro: `<i class="fas fa-handshake-angle"></i> Hello, I'm Arthur Medeiros`,
-    about:
-      "Web/Mobile Developer with over 4 years of experience in software projects, mainly focused on Front-end technologies such as Angular, Flutter, and React. I hold a Bachelor’s degree in Information Systems from the Federal University of Rio Grande do Norte (UFRN). I am 27 years old and currently based in Caicó/RN, Brazil. In addition to front-end expertise, I have solid knowledge in agile methodologies, project and people management, as well as experience with back-end development. Currently, I am focused on further specializing in system development while also exploring the field of Artificial Intelligence (AI) to create innovative and intelligent solutions.",
+    about: `Web/Mobile Developer with over ${dateExperience} years of experience in software projects, mainly focused on Front-end technologies such as Angular, Flutter, and React. I hold a Bachelor’s degree in Information Systems from the Federal University of Rio Grande do Norte (UFRN). I am 27 years old and currently based in Caicó/RN, Brazil. In addition to front-end expertise, I have solid knowledge in agile methodologies, project and people management, as well as experience with back-end development. Currently, I am focused on further specializing in system development while also exploring the field of Artificial Intelligence (AI) to create innovative and intelligent solutions.`,
     "who-am-i-title": `<i class="fas fa-person-chalkboard"></i>Who am i`,
     "skills-title": `<i class="fas fa-tools"></i>Skills`,
     "experience-title": `<i class="fas fa-briefcase"></i> Experience`,
@@ -92,10 +99,7 @@ const translations = {
   },
   pt: {
     intro: `<i class="fas fa-handshake-angle"></i> Olá, eu sou Arthur Medeiros`,
-    about:
-      "Desenvolvedor Web/Mobile com mais de " +
-      dateExperience +
-      " de experiência em projetos de software, atuando principalmente no Front-end com tecnologias como Angular, Flutter e React. Sou bacharel em Sistemas de Informação pela Universidade Federal do Rio Grande do Norte (UFRN). Tenho 27 anos e resido em Caicó/RN. Além da experiência em front-end, possuo conhecimentos sólidos em metodologias ágeis, gestão de projetos e pessoas, além de prática com back-end. Atualmente, busco me especializar cada vez mais no desenvolvimento de sistemas e estou ingressando na área de Inteligência Artificial (IA), expandindo minha atuação para soluções inovadoras e inteligentes.",
+    about: `Desenvolvedor Web/Mobile com mais de ${dateExperience} anos de experiência em projetos de software, atuando principalmente no Front-end com tecnologias como Angular, Flutter e React. Sou bacharel em Sistemas de Informação pela Universidade Federal do Rio Grande do Norte (UFRN). Tenho 27 anos e resido em Caicó/RN. Além da experiência em front-end, possuo conhecimentos sólidos em metodologias ágeis, gestão de projetos e pessoas, além de prática com back-end. Atualmente, busco me especializar cada vez mais no desenvolvimento de sistemas e estou ingressando na área de Inteligência Artificial (IA), expandindo minha atuação para soluções inovadoras e inteligentes.`,
     "who-am-i-title": `<i class="fas fa-person-chalkboard"></i> Quem sou eu`,
     "skills-title": `<i class="fas fa-tools"></i>Habilidades`,
     "experience-title": `<i class="fas fa-briefcase"></i> Experiência`,
@@ -110,7 +114,7 @@ const translations = {
       "Atuação em desenvolvimento de soluções Web/Mobile, construindo aplicativos intuitivos e aplicações web robustas. Boas práticas de código com aplicação de clean architecture e metodologia scrum.",
     "experience-developer-title": "Full Stack Developer (2019 - Atual)",
     "experience-graduation":
-      "Formado em sistemas de informação, todo o conhecimento que detenho vem boa parte da minha vivência acadêmica, como: organização, metodologias e paixão por tecnologia. Atuei em projetos de extensão, monitoria e publiquei um artigo na edição de 2023 do Brazilian Conference - Springer no qual apliquei estudos de caso com foco em análise de dados, aplicando aprendizado de máquina, por meio da linguagem de programação Python.",
+      "Formado em sistemas de informação, todo o conhecimento que detenho vem boa parte da minha vivência acadêmica, como: organização, metodologias e paixão por tecnologia. Atuei em projetos de extensão, monitoria e publiquei um artigo na edição de 2023 do Brazilian Conference - Springer no qual apliquei estudos de caso com foco em análise de dados, utilizando aprendizado de máquina, por meio da linguagem de programação Python.",
     "experience-graduation-title":
       "Bracharelado em Sistemas de Informação (2017-2024)",
     "experience-freelancer-title": "Full Stack Developer (2019 - Atual)",
@@ -1207,7 +1211,7 @@ function hideLoader(
 
 const btn = document.querySelector(".menu-toggle");
 const links = document.querySelector(".nav-links");
-    const navbar = document.querySelector("nav");
+const navbar = document.querySelector("nav");
 
 btn.addEventListener("click", () => {
   links.classList.toggle("show");
