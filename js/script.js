@@ -71,7 +71,7 @@ const translations = {
     "project-receipts-description":
       "Guide Receipts is an app that allows users to store and organize their favorite recipes easily and efficiently. It enables saving recipes, categorizing them, creating step-by-step instructions, and marking favorites for quick access.",
     "project-receipts-short": "An app to store and organize personal recipes.",
-    
+
     "project-vitex-title": "ViTex",
     "project-vitex-description":
       "ViTex is a system that manages the entire textile production process and sales. It lets users register orders, track production from start to finish, and organize shipments. The system also supports multiple users, helping teams work together more efficiently. With simple inventory management for both production and warehouse, it improves material tracking and overall organization.",
@@ -1204,3 +1204,28 @@ function hideLoader(
     loader.style.display = "none";
   }, 2500);
 }
+
+const btn = document.querySelector(".menu-toggle");
+const links = document.querySelector(".nav-links");
+    const navbar = document.querySelector("nav");
+
+btn.addEventListener("click", () => {
+  links.classList.toggle("show");
+});
+
+// Fechar ao clicar em qualquer link
+links.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    links.classList.remove("show");
+  });
+});
+
+// fecha ao clicar fora do navbar
+document.addEventListener("click", (e) => {
+  if (
+    links.classList.contains("show") &&
+    !navbar.contains(e.target) // se clicou fora do nav inteiro
+  ) {
+    links.classList.remove("show");
+  }
+});

@@ -50,10 +50,18 @@
         <h2 id="dialogTitle"></h2>
 
         <div class="version-switch">
-          <button data-i18n="version-web" id="btnWeb" onclick="switchVersion('web')">
+          <button
+            data-i18n="version-web"
+            id="btnWeb"
+            onclick="switchVersion('web')"
+          >
             Versão Web <i class="fas fa-desktop"></i>
           </button>
-          <button data-i18n="version-mobile" id="btnApp" onclick="switchVersion('app')">
+          <button
+            data-i18n="version-mobile"
+            id="btnApp"
+            onclick="switchVersion('app')"
+          >
             Versão Mobile <i class="fas fa-mobile-android"></i>
           </button>
         </div>
@@ -67,7 +75,12 @@
         </div>
         <p id="dialogDescription"></p>
         <div id="dialogTechs" class="tech-list"></div>
-        <a id="dialogLink" target="_blank" class="btn btn-sm" data-i18n="link-project">
+        <a
+          id="dialogLink"
+          target="_blank"
+          class="btn btn-sm"
+          data-i18n="link-project"
+        >
           Acessar Projeto <i class="fab fa-github"></i>
         </a>
         <!-- Handle para redimensionar -->
@@ -91,7 +104,13 @@
     <header>
       <nav>
         <div><img src="assets/logo.png" alt="Logo" /></div>
-        <div>
+
+        <!-- Botão de menu (visível só no mobile) -->
+        <button class="menu-toggle" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="nav-links">
           <a data-i18n="who-am-i-title" href="#about">
             <i class="fas fa-person-chalkboard"></i> Quem sou eu
           </a>

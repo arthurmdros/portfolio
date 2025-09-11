@@ -63,8 +63,17 @@ body.light {
   .dialog-content {
     background: var(--card-light);
   }
+
   .placeholder p {
     color: var(--text-light);
+  }
+
+  .nav-links a {
+    color: var(--text-light) !important;
+  }
+  
+  .nav-links {
+    background: var(--card-light);
   }
 }
 
@@ -89,8 +98,17 @@ body.dark {
   .dialog-content {
     background: var(--card-dark);
   }
+
   .placeholder p {
     color: var(--text-dark);
+  }
+
+  .nav-links a {
+    color: var(--text-dark) !important;
+  }
+
+  .nav-links {
+    background: var(--card-dark);
   }
 }
 
@@ -174,12 +192,55 @@ header nav a:hover i {
   transform: rotate(8deg);
 }
 
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Botão de menu (escondido no desktop) */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
-  header nav {
+  .menu-toggle {
+    display: block; /* mostra botão */
+  }
+
+  .nav-links {
+    display: none !important; /* esconde links por padrão */
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.3s ease;
+  }
+
+  .nav-links.show {
+    display: flex !important; /* exibe ao abrir */
+  }
+
+  .nav-links.hidden {
+    display: none !important; /* exibe ao abrir */
+  }
+
+  .nav-links a {
+    padding: 10px;
+  }
+
+  /* header nav {
     flex-direction: column;
     gap: 12px;
-  }
+  } */
 
   header img {
     max-height: 50px;
@@ -192,6 +253,18 @@ header nav a:hover i {
 
   header nav a {
     font-size: 0.9rem;
+  }
+}
+
+/* Animação simples */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
